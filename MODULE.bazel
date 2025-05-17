@@ -15,3 +15,5 @@ bazel_lib_toolchains = use_extension("@aspect_bazel_lib//lib:extensions.bzl", "t
 use_repo(bazel_lib_toolchains, "jq_toolchains")
 
 register_toolchains("@jq_toolchains//:all")
+
+bazel_dep(name = "buildifier_prebuilt", version = "8.0.3", dev_dependency = True)
