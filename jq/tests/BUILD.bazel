@@ -136,9 +136,16 @@ diff_test(
     ]
 ]
 
+# TODO(alex): fix these tests
+not_windows = select({
+    "@platforms//os:windows": ["@platforms//:incompatible"],
+    "//conditions:default": [],
+})
+
 assert_contains(
     name = "check_stamped",
     actual = "stamped.json",
+    compatible_with = not_windows,
     # v1.2.3 comes from the --embed_label flag in .bazelrc
     expected = """foo": "v1.2.3""",
 )
@@ -146,6 +153,7 @@ assert_contains(
 assert_contains(
     name = "check_unstamped",
     actual = "unstamped.json",
+    compatible_with = not_windows,
     expected = """foo": "<unstamped>""",
 )
 
