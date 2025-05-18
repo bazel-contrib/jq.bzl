@@ -8,8 +8,8 @@ TAG=$1
 # The prefix is chosen to match what GitHub generates for source archives
 # This guarantees that users can easily switch from a released artifact to a source archive
 # with minimal differences in their code (e.g. strip_prefix remains the same)
-PREFIX="rules_jq-${TAG:1}"
-ARCHIVE="rules_jq-$TAG.tar.gz"
+PREFIX="jq.bzl-${TAG:1}"
+ARCHIVE="jq.bzl-$TAG.tar.gz"
 
 # NB: configuration for 'git archive' is in /.gitattributes
 git archive --format=tar --prefix=${PREFIX}/ ${TAG} | gzip > $ARCHIVE
@@ -35,7 +35,7 @@ http_archive(
     name = "jq.bzl",
     sha256 = "${SHA}",
     strip_prefix = "${PREFIX}",
-    url = "https://github.com/bazel-contrib/rules_jq/releases/download/${TAG}/${ARCHIVE}",
+    url = "https://github.com/bazel-contrib/jq.bzl/releases/download/${TAG}/${ARCHIVE}",
 )
 EOF
 

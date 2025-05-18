@@ -22,7 +22,7 @@ Otherwise later tooling on CI will yell at you about formatting/linting violatio
 ## Using this as a development dependency of other rules
 
 You'll commonly find that you develop in another WORKSPACE, such as
-some other ruleset that depends on rules_jq, or in a nested
+some other ruleset that depends on this one, or in a nested
 WORKSPACE in the integration_tests folder.
 
 To always tell Bazel to use this directory rather than some release
@@ -30,11 +30,11 @@ artifact or a version fetched from the internet, run this from this
 directory:
 
 ```sh
-OVERRIDE="--override_repository=rules_jq=$(pwd)/rules_jq"
+OVERRIDE="--override_repository=jq.bzl=$(pwd)/jq.bzl"
 echo "common $OVERRIDE" >> ~/.bazelrc
 ```
 
-This means that any usage of `@rules_jq` on your system will point to this folder.
+This means that any usage of `@jq.bzl` on your system will point to this folder.
 
 ## Releasing
 
@@ -45,7 +45,7 @@ If you do nothing, eventually the newest commits will be released automatically 
 This automation is defined in .github/workflows/tag.yaml.
 
 Rather than wait for the cron event, you can trigger manually. Navigate to
-https://github.com/bazel-contrib/rules_jq/actions/workflows/tag.yaml
+https://github.com/bazel-contrib/jq.bzl/actions/workflows/tag.yaml
 and press the "Run workflow" button.
 
 If you need control over the next release version, for example when making a release candidate for a new major,
