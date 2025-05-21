@@ -135,4 +135,4 @@ genrule(
 
 ## API docs
 
-- [jq](docs/jq.md) Run `jq` as a Bazel build action
+- [jq](docs/rules.md) Run `jq` as a Bazel build action
