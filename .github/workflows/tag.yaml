@@ -17,7 +17,9 @@ on:
 jobs:
   tag:
     permissions:
-      contents: write # allow create tag
+      contents: write
+      attestations: write
+      id-token: write
     runs-on: ubuntu-latest
     outputs:
       new-tag: ${{ steps.ccv.outputs.new-tag }}
