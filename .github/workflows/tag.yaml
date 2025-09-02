@@ -18,8 +18,6 @@ jobs:
   tag:
     permissions:
       contents: write
-      attestations: write
-      id-token: write
     runs-on: ubuntu-latest
     outputs:
       new-tag: ${{ steps.ccv.outputs.new-tag }}
@@ -41,4 +39,6 @@ jobs:
       publish_token: ${{ secrets.BCR_PUBLISH_TOKEN }}
     if: needs.tag.outputs.new-tag == 'true' && needs.tag.outputs.new-tag-version-type != 'major'
     permissions:
-      contents: write # allow create release
+      contents: write
+      attestations: write
+      id-token: write
