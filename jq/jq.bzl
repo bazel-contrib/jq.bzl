@@ -143,7 +143,7 @@ def jq(name, srcs, filter = None, filter_file = None, args = [], out = None, dat
         name: Name of the rule
         srcs: List of input files. May be empty.
         data: List of additional files. May be empty.
-        filter: Filter expression (https://stedolan.github.io/jq/manual/#Basicfilters).
+        filter: Filter expression (https://jqlang.org/manual/#basic-filters).
             Subject to stamp variable replacements, see [Stamping](./stamping.md).
             When stamping is enabled, a variable named "STAMP" will be available in the filter.
 
