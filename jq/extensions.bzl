@@ -15,28 +15,3 @@ def _toolchains_extension(_):
 toolchains = module_extension(
     implementation = _toolchains_extension,
 )
-
-# def register_jq_toolchains(name = DEFAULT_JQ_REPOSITORY, version = DEFAULT_JQ_VERSION, register = True):
-#     """Registers jq toolchain and repositories
-
-#     Args:
-#         name: override the prefix for the generated toolchain repositories
-#         version: the version of jq to execute (see https://github.com/stedolan/jq/releases)
-#         register: whether to call through to native.register_toolchains.
-#             Should be True for WORKSPACE users, but false when used under bzlmod extension
-#     """
-#     for [platform, _] in JQ_PLATFORMS.items():
-#         jq_platform_repo(
-#             name = "%s_%s" % (name, platform),
-#             platform = platform,
-#             version = version,
-#         )
-#         if register:
-#             native.register_toolchains("@%s_toolchains//:%s_toolchain" % (name, platform))
-
-#     jq_host_alias_repo(name = name)
-
-#     jq_toolchains_repo(
-#         name = "%s_toolchains" % name,
-#         user_repository_name = name,
-#     )

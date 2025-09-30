@@ -59,7 +59,7 @@ def _jq_toolchains_repo_impl(rctx):
 
 # Forward all the providers
 def _resolved_toolchain_impl(ctx):
-    toolchain_info = ctx.toolchains["{0}}"]
+    toolchain_info = ctx.toolchains["{0}"]
     return [
         toolchain_info,
         toolchain_info.default,

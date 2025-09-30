@@ -147,7 +147,7 @@
   "moduleExtensions": {
     "//jq:extensions.bzl%toolchains": {
       "general": {
-        "bzlTransitiveDigest": "pFUksYdCFINMNVft/82KuQvtlM4GSKtNPe6S0BynTkk=",
+        "bzlTransitiveDigest": "0JHJDZduhS2q44C6PcmxjsoRUjfsdM9m9ibBWFvBXKc=",
         "usagesDigest": "GYE2QoH/DP6XPxWRmPG+YaepMhx7GCH1wBUGgH712Uc=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
