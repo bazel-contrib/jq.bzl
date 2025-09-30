@@ -1,5 +1,5 @@
-load("@aspect_bazel_lib//lib:diff_test.bzl", "diff_test")
-load("@aspect_bazel_lib//lib:testing.bzl", "assert_contains")
+load("@bazel_lib//lib:diff_test.bzl", "diff_test")
+load("@bazel_lib//lib:testing.bzl", "assert_contains")
 load("//jq:jq.bzl", "jq", "jq_test")
 
 exports_files([
