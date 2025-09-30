@@ -6,5 +6,8 @@ bzl_library(
     name = "jq",
     srcs = ["jq.bzl"],
     visibility = ["//visibility:public"],
-    deps = ["//jq/private:jq"],
+    deps = [
+        "//jq/private:jq",
+        "@bazel_lib//lib:diff_test",
+    ],
 )

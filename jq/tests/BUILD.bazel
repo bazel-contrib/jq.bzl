@@ -1,6 +1,6 @@
 load("@aspect_bazel_lib//lib:diff_test.bzl", "diff_test")
 load("@aspect_bazel_lib//lib:testing.bzl", "assert_contains")
-load("//jq:jq.bzl", "jq")
+load("//jq:jq.bzl", "jq", "jq_test")
 
 exports_files([
     "a_pretty.json",
@@ -196,4 +196,12 @@ jq(
     name = "a",
     srcs = ["a.json"],
     filter = """ .foo = "baz" """,
+)
+
+jq_test(
+    name = "case_jq_test",
+    file1 = "a_pretty.json",
+    file2 = "a.json",
+    filter1 = ".moo",
+    filter2 = ".moo",
 )
