@@ -7,8 +7,8 @@ bzl_library(
     srcs = ["jq.bzl"],
     visibility = ["//visibility:public"],
     deps = [
-        "@aspect_bazel_lib//lib:expand_make_vars",
-        "@aspect_bazel_lib//lib:stamping",
-        "@aspect_bazel_lib//lib:strings",
+        "@bazel_lib//lib:expand_make_vars",
+        "@bazel_lib//lib:stamping",
+        "@bazel_lib//lib:strings",
     ],
 )

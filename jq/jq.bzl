@@ -134,7 +134,7 @@ jq_rule = rule(
     doc = """Most users should use the `jq` macro instead.""",
     attrs = jq_lib.attrs,
     implementation = jq_lib.implementation,
-    toolchains = ["@aspect_bazel_lib//lib:jq_toolchain_type"],
+    toolchains = ["@jq.bzl//jq/toolchain:type"],
 )
 
 def jq(name, srcs, filter = None, filter_file = None, args = [], out = None, data = [], expand_args = False, **kwargs):

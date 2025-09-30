@@ -1,8 +1,9 @@
 """Implementation for jq rule"""
 
-load("@aspect_bazel_lib//lib:expand_make_vars.bzl", "expand_variables")
-load("@aspect_bazel_lib//lib:stamping.bzl", "STAMP_ATTRS", "maybe_stamp")
-load("@aspect_bazel_lib//lib:strings.bzl", "split_args")
+load("@bazel_lib//lib:expand_make_vars.bzl", "expand_variables")
+load("@bazel_lib//lib:stamping.bzl", "STAMP_ATTRS", "maybe_stamp")
+load("@bazel_lib//lib:strings.bzl", "split_args")
+load("//jq/toolchain:toolchain.bzl", "TOOLCHAIN_TYPE")
 
 _jq_attrs = dict({
     "srcs": attr.label_list(
@@ -25,7 +26,7 @@ _jq_attrs = dict({
 }, **STAMP_ATTRS)
 
 def _jq_impl(ctx):
-    jq_bin = ctx.toolchains["@aspect_bazel_lib//lib:jq_toolchain_type"].jqinfo.bin
+    jq_bin = ctx.toolchains[TOOLCHAIN_TYPE].jqinfo.bin
 
     out = ctx.outputs.out or ctx.actions.declare_file(ctx.attr.name + ".json")
     if ctx.attr.expand_args:
@@ -67,7 +68,7 @@ def _jq_impl(ctx):
                 out = stamp_json.path,
             ),
             mnemonic = "ConvertStatusToJson",
-            toolchain = "@aspect_bazel_lib//lib:jq_toolchain_type",
+            toolchain = TOOLCHAIN_TYPE,
         )
         inputs.append(stamp_json)
 
@@ -94,7 +95,7 @@ def _jq_impl(ctx):
         outputs = [out],
         command = cmd,
         mnemonic = "Jq",
-        toolchain = "@aspect_bazel_lib//lib:jq_toolchain_type",
+        toolchain = TOOLCHAIN_TYPE,
     )
 
     return DefaultInfo(files = depset([out]), runfiles = ctx.runfiles([out]))

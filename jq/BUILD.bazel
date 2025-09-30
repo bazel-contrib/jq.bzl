@@ -8,6 +8,7 @@ bzl_library(
     visibility = ["//visibility:public"],
     deps = [
         "//jq/private:jq",
+        "//jq/toolchain",
         "@bazel_lib//lib:diff_test",
     ],
 )
