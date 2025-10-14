@@ -23,6 +23,8 @@ assert_json_matches(
 sh_test(
     name = "jq_bin_test",
     srcs = ["tests/jq_bin.sh"],
+    data = ["@jq_toolchains//:resolved_toolchain"],
     env = {"JQ_BIN": "$(JQ_BIN)"},
     toolchains = ["@jq_toolchains//:resolved_toolchain"],
+    deps = ["@bazel_tools//tools/bash/runfiles"],
 )
