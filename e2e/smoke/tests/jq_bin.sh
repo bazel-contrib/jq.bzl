@@ -11,4 +11,8 @@ source "${RUNFILES_DIR:-/dev/null}/$f" 2>/dev/null || \
   { echo>&2 "ERROR: cannot find $f"; exit 1; }; f=; set -e
 # --- end runfiles.bash initialization v3 ---
 
-$(rlocation "${JQ_BIN#external/}") --version
+output=$($(rlocation "${JQ_BIN#external/}") --version)
+if [[ ! "$output" =~ "jq" ]]; then
+  echo "ERROR: Expected 'jq' in version output, got: $output"
+  exit 1
+fi
