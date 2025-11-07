@@ -249,3 +249,14 @@ common --incompatible_disable_non_executable_java_binary
 # See https://github.com/bazelbuild/bazel/issues/17032
 common --incompatible_disable_starlark_host_transitions
 # Docs: https://registry.build/flag/bazel?filter=incompatible_disable_starlark_host_transitions
+
+# Address a counterintuitive interaction with --action_env and it's affect on repository environments.
+#
+# Note that this will implicitly affect other features which inherit the repository environment such as:
+# - Credential managers
+# - Download manager
+# - And possibly more.
+#
+# See https://github.com/bazelbuild/bazel/issues/26222
+common --incompatible_repo_env_ignores_action_env
+# Docs: https://registry.build/flag/bazel?filter=incompatible_repo_env_ignores_action_env
