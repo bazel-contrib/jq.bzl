@@ -4,6 +4,7 @@ Add a basic smoke-test target below.
 
 load("@aspect_bazel_lib//lib:testing.bzl", "assert_json_matches")
 load("@jq.bzl", "jq")
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
 jq(
     name = "no_srcs",
@@ -17,4 +18,13 @@ assert_json_matches(
     file2 = "no_srcs.json",
     filter1 = ".name",
     filter2 = "\"Alice\"",
+)
+
+sh_test(
+    name = "jq_bin_test",
+    srcs = ["tests/jq_bin.sh"],
+    data = ["@jq_toolchains//:resolved_toolchain"],
+    env = {"JQ_BIN": "$(JQ_BIN)"},
+    toolchains = ["@jq_toolchains//:resolved_toolchain"],
+    deps = ["@bazel_tools//tools/bash/runfiles"],
 )
