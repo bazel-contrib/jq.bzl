@@ -32,6 +32,13 @@ JQ_PLATFORMS = {
             "@platforms//cpu:aarch64",
         ],
     ),
+    "linux_riscv64": struct(
+        release_platform = "linux-riscv64",
+        compatible_with = [
+            "@platforms//os:linux",
+            "@platforms//cpu:riscv64",
+        ],
+    ),
     "windows_amd64": struct(
         release_platform = "win64",
         compatible_with = [
