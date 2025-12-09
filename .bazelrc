@@ -1,7 +1,3 @@
-import %workspace%/tools/preset.bazelrc
-
-common --config=ruleset
-
 # For testing our --stamp behavior.
 # Normally users would use a --workspace_status_command with a script that calls `git describe`.
 common --embed_label=v1.2.3
