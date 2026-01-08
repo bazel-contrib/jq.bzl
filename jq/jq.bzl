@@ -14,7 +14,8 @@ Create a new file `bazel-out/.../no_srcs.json` containing some JSON data:
 jq(
     name = "no_srcs",
     srcs = [],
-    filter = ".name = \"Alice\"",
+    filter = ".greeting = \"Hello, \" + $name",
+    args = ["--arg" "name" "World"],
 )
 ```
 
