@@ -4,19 +4,19 @@ workspaces:
   - e2e/smoke
 tasks:
   - test:
-      name: "Test (Bazel 7.x)"
+      name: Bazel 7
       id: bazel-7
       env:
         USE_BAZEL_VERSION: 7.x
   - test:
-      name: "Test (Bazel 8.x)"
+      name: Bazel 8
       id: bazel-8
       env:
         USE_BAZEL_VERSION: 8.x
   - test:
-      name: Test (Bazel 9.x)
+      name: Bazel 9
       id: bazel-9
       env:
-        USE_BAZEL_VERSION: rolling
+        USE_BAZEL_VERSION: 9.x
 notifications:
   github: {}
