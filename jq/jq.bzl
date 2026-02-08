@@ -129,7 +129,9 @@ genrule(
 """
 
 load("@bazel_lib//lib:diff_test.bzl", "diff_test")
-load("//jq/private:jq.bzl", "jq_lib")
+load("//jq/private:jq.bzl", _jq_lib = "jq_lib")
+
+jq_lib = _jq_lib
 
 jq_rule = rule(
     doc = """Most users should use the `jq` macro instead.""",
