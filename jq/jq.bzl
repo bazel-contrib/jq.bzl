@@ -21,9 +21,9 @@ jq(
 
 Remove a field from `package.json`:
 
-> The output path `bazel-out/.../package.json` matches the path of the source file,
-> which means you must refer to the label `:no_dev_deps` to reference the output,
-> since Bazel doesn't provide a label for an output file that collides with an input file.
+> The output path `bazel-out/.../package.json` matches the path of the source file.
+> However Bazel doesn't provide a label for an output file that collides with an input file.
+> This means you must refer to the label of the target (`:no_dev_deps`) to reference the output json file.
 
 ```starlark
 jq(
