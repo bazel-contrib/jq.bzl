@@ -19,8 +19,7 @@ jq_test(
 sh_test(
     name = "jq_bin_test",
     srcs = ["tests/jq_bin.sh"],
-    data = ["@jq_toolchains//:resolved_toolchain"],
-    env = {"JQ_BIN": "$(JQ_BIN)"},
-    toolchains = ["@jq_toolchains//:resolved_toolchain"],
+    data = ["@jq"],
+    env = {"JQ_BIN": "$(rlocationpath @jq//:jq)"},
     deps = ["@bazel_tools//tools/bash/runfiles"],
 )
