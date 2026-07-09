@@ -8,4 +8,4 @@ local_path_override(
 )
 
 toolchains = use_extension("@jq_under_test//jq:extensions.bzl", "toolchains")
-use_repo(toolchains, "jq_toolchains")
+use_repo(toolchains, "jq", "jq_toolchains")
