@@ -24,3 +24,10 @@ sh_test(
     toolchains = ["@jq_toolchains//:resolved_toolchain"],
     deps = ["@bazel_tools//tools/bash/runfiles"],
 )
+
+sh_test(
+    name = "jq_host_alias_test",
+    srcs = ["tests/jq_host_alias.sh"],
+    data = ["@jq"],
+    env = {"JQ": "$(rootpath @jq)"},
+)
