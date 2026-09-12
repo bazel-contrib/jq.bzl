@@ -5,7 +5,7 @@ load(":platforms.bzl", "JQ_PLATFORMS")
 
 TOOLCHAIN_TYPE = "@jq.bzl//jq/toolchain:type"
 DEFAULT_JQ_REPOSITORY = "jq"
-DEFAULT_JQ_VERSION = "1.7"
+DEFAULT_JQ_VERSION = "1.8.2"
 
 JqInfo = provider(
     doc = "Provide info for executing jq",
