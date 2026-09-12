@@ -1,4 +1,4 @@
-"""https://github.com/stedolan/jq/releases
+"""https://github.com/jqlang/jq/releases
 
 The integrity hashes can be computed with
 shasum -b -a 384 [downloaded file] | awk '{ print $1 }' | xxd -r -p | base64
