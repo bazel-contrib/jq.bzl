@@ -46,6 +46,13 @@ JQ_PLATFORMS = {
             "@platforms//cpu:x86_64",
         ],
     ),
+    "windows_arm64": struct(
+        release_platform = "windows-arm64",
+        compatible_with = [
+            "@platforms//os:windows",
+            "@platforms//cpu:arm64",
+        ],
+    ),
 }
 
 def _jq_platform_repo_impl(rctx):
