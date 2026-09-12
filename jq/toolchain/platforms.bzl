@@ -46,6 +46,13 @@ JQ_PLATFORMS = {
             "@platforms//cpu:x86_64",
         ],
     ),
+    "windows_arm64": struct(
+        release_platform = "windows-arm64",
+        compatible_with = [
+            "@platforms//os:windows",
+            "@platforms//cpu:arm64",
+        ],
+    ),
 }
 
 def _jq_platform_repo_impl(rctx):
@@ -53,7 +60,7 @@ def _jq_platform_repo_impl(rctx):
     meta = JQ_PLATFORMS[rctx.attr.platform]
     release_platform = meta.release_platform if hasattr(meta, "release_platform") else rctx.attr.platform
 
-    url = "https://github.com/stedolan/jq/releases/download/jq-{0}/jq-{1}{2}".format(
+    url = "https://github.com/jqlang/jq/releases/download/jq-{0}/jq-{1}{2}".format(
         rctx.attr.version,
         release_platform,
         ".exe" if is_windows else "",
