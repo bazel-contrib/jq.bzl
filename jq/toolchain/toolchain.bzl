@@ -126,7 +126,7 @@ exports_files(["jq{ext}"])
         ext = ext,
     ))
 
-    rctx.symlink("../{name}_{platform}/jq{ext}".format(
+    rctx.symlink("../{name}_toolchains_{platform}/jq{ext}".format(
         name = rctx.attr.name,
         platform = repo_utils.platform(rctx),
         ext = ext,

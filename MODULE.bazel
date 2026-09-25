@@ -10,7 +10,7 @@ bazel_dep(name = "package_metadata", version = "0.0.2")
 bazel_dep(name = "platforms", version = "0.0.5")
 
 toolchains = use_extension("@jq.bzl//jq:extensions.bzl", "toolchains")
-use_repo(toolchains, "jq_toolchains")
+use_repo(toolchains, "jq", "jq_toolchains")
 
 register_toolchains("@jq_toolchains//:all")
 
