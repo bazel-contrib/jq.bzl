@@ -1,5 +1,5 @@
-load("@jq.bzl", "jq")
-load("@jq.bzl//jq:jq.bzl", "jq_test")
+load("@jq_under_test//:jq.bzl", "jq")
+load("@jq_under_test//jq:jq.bzl", "jq_test")
 load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
 jq(
