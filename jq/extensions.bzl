@@ -11,7 +11,7 @@ def _toolchains_extension(module_ctx):
             platform = platform,
             version = DEFAULT_JQ_VERSION,
         )
-    jq_host_alias_repo(name = "jq")
+    jq_host_alias_repo(name = "jq", toolchains_repo_name = "jq_toolchains")
     return module_ctx.extension_metadata(reproducible = True)
 
 toolchains = module_extension(
