@@ -1,4 +1,5 @@
-bazel_dep(name = "jq.bzl", version = "0.0.0")
+# Ensure action toolchain labels do not depend on the caller's repository name.
+bazel_dep(name = "jq.bzl", version = "0.0.0", repo_name = "jq_under_test")
 bazel_dep(name = "rules_shell", version = "0.6.1")
 
 local_path_override(
@@ -6,5 +7,5 @@ local_path_override(
     path = "../..",
 )
 
-toolchains = use_extension("@jq.bzl//jq:extensions.bzl", "toolchains")
+toolchains = use_extension("@jq_under_test//jq:extensions.bzl", "toolchains")
 use_repo(toolchains, "jq_toolchains")
