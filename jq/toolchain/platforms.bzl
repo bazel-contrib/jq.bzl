@@ -39,6 +39,13 @@ JQ_PLATFORMS = {
             "@platforms//cpu:riscv64",
         ],
     ),
+    "linux_s390x": struct(
+        release_platform = "linux-s390x",
+        compatible_with = [
+            "@platforms//os:linux",
+            "@platforms//cpu:s390x",
+        ],
+    ),
     "windows_amd64": struct(
         release_platform = "win64",
         compatible_with = [
