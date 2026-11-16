@@ -3,7 +3,7 @@
 load("@bazel_lib//lib:repo_utils.bzl", "repo_utils")
 load(":platforms.bzl", "JQ_PLATFORMS")
 
-TOOLCHAIN_TYPE = "@jq.bzl//jq/toolchain:type"
+TOOLCHAIN_TYPE = Label("//jq/toolchain:type")
 DEFAULT_JQ_REPOSITORY = "jq"
 DEFAULT_JQ_VERSION = "1.8.2"
 
