@@ -86,7 +86,7 @@ jq(
     args = [
         "--slurpfile",
         "a",
-        "$(location a_pretty.json)",
+        "$(execpath a_pretty.json)",
     ],
     data = ["a_pretty.json"],
     expand_args = True,
@@ -162,7 +162,7 @@ genrule(
     name = "case_genrule",
     srcs = ["a.json"],
     outs = ["genrule_output.json"],
-    cmd = "$(JQ_BIN) '.' $(location a.json) > $@",
+    cmd = "$(JQ_BIN) '.' $(execpath a.json) > $@",
     toolchains = ["@jq_toolchains//:resolved_toolchain"],
 )
 
