@@ -23,3 +23,11 @@ sh_test(
     env = {"JQ_BIN": "$(rlocationpath @jq//:jq)"},
     deps = ["@bazel_tools//tools/bash/runfiles"],
 )
+
+sh_test(
+    name = "jq_host_alias_test",
+    srcs = ["tests/jq_host_alias.sh"],
+    data = ["@jq"],
+    env = {"JQ_BIN": "$(rlocationpath @jq//:jq)"},
+    deps = ["@bazel_tools//tools/bash/runfiles"],
+)
