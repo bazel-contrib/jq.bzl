@@ -175,11 +175,12 @@ def jq(name, srcs, filter = None, filter_file = None, args = [], out = None, dat
         **kwargs
     )
 
-def jq_test(name, file1, file2, filter1 = ".", filter2 = ".", **kwargs):
+def jq_test(name, file1, file2, filter1 = ".", filter2 = ".", filter_file1 = None, filter_file2 = None, **kwargs):
     """Assert that the given json files have the same semantic content.
 
     Uses jq to filter each file. The default value of `"."` as the filter
-    means to compare the whole file.
+    means to compare the whole file. A filter file overrides the corresponding
+    `"."` filter; combining it with any other filter expression is an error.
 
     See the jq macro for more about the filter expressions as well as
     setup notes for the `jq` toolchain.
@@ -192,21 +193,30 @@ def jq_test(name, file1, file2, filter1 = ".", filter2 = ".", **kwargs):
         file2: another json file
         filter1: a jq filter to apply to file1
         filter2: a jq filter to apply to file2
+        filter_file1: file containing a jq filter to apply to file1; requires filter1 = "."
+        filter_file2: file containing a jq filter to apply to file2; requires filter2 = "."
         **kwargs: additional named arguments for the resulting diff_test
     """
+    if filter_file1 != None and filter1 != ".":
+        fail("Cannot provide both filter1 and filter_file1 unless filter1 is '.'")
+    if filter_file2 != None and filter2 != ".":
+        fail("Cannot provide both filter2 and filter_file2 unless filter2 is '.'")
+
     name1 = "{}_jq1".format(name)
     name2 = "{}_jq2".format(name)
     jq_rule(
         name = name1,
         srcs = [file1],
-        filter = filter1,
+        filter = filter1 if filter_file1 == None else None,
+        filter_file = filter_file1,
         out = name1 + ".json",
     )
 
     jq_rule(
         name = name2,
         srcs = [file2],
-        filter = filter2,
+        filter = filter2 if filter_file2 == None else None,
+        filter_file = filter_file2,
         out = name2 + ".json",
     )
 
@@ -215,9 +225,9 @@ def jq_test(name, file1, file2, filter1 = ".", filter2 = ".", **kwargs):
         file1 = name1,
         file2 = name2,
         failure_message = "'{}' from {} doesn't match '{}' from {}".format(
-            filter1,
+            filter1 if filter_file1 == None else filter_file1,
             file1,
-            filter2,
+            filter2 if filter_file2 == None else filter_file2,
             file2,
         ),
         **kwargs

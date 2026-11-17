@@ -205,3 +205,29 @@ jq_test(
     filter1 = ".moo",
     filter2 = ".moo",
 )
+
+jq_test(
+    name = "case_jq_test_filter_file1_test",
+    file1 = "a_pretty.json",
+    file2 = "a.json",
+    filter2 = ".foo",
+    filter_file1 = "foo_filter.jq",
+)
+
+jq_test(
+    name = "case_jq_test_filter_file2_test",
+    file1 = "a_pretty.json",
+    file2 = "a.json",
+    filter1 = ".foo",
+    filter_file2 = "foo_filter.jq",
+)
+
+jq_test(
+    name = "case_jq_test_both_filter_files_test",
+    file1 = "a_pretty.json",
+    file2 = "a.json",
+    filter1 = ".",
+    filter2 = ".",
+    filter_file1 = "foo_filter.jq",
+    filter_file2 = "foo_filter.jq",
+)
